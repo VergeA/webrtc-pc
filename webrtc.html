@@ -1744,8 +1744,11 @@
                       <li data-tests=
                       "RTCPeerConnection-setRemoteDescription-offer.html,RTCPeerConnection-setRemoteDescription.html,protocol/missing-fields.html">
                         <p>
-                          If the content of <var>description</var> is not valid
-                          SDP syntax, then [= reject =] <var>p</var> with an
+                          If the process to apply <var>description</var> failed to
+                          parse the SDP as defined in [[!RFC9429]] Section 5.8.
+                          including session-level parsing (5.8.1.) and media-level
+                          parsing (5.8.2.), but excluding semantics verification
+                          (5.8.3.), then [= reject =] <var>p</var> with an
                           {{RTCError}} (with {{RTCError/errorDetail}} set to
                           {{RTCErrorDetailType/"sdp-syntax-error"}} and the
                           {{RTCError/sdpLineNumber}} attribute set to the line
@@ -1773,7 +1776,8 @@
                       </li>
                       <li>
                         <p>
-                          If the content of <var>description</var> is invalid,
+                          If the <var>description</var> failed semantics
+                          validation as defined in [[!RFC9429]] Section 5.8.3.,
                           then [= reject =] <var>p</var> with a newly [=
                           exception/created =] {{InvalidAccessError}} and abort
                           these steps.
