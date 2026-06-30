@@ -1199,6 +1199,16 @@
               </p>
             </li>
           </ol>
+		  <section>
+		  	<h4>
+			  User Agent Restrictions
+		    </h4>
+			<p>
+			  The user agent may disallow some or all behavior of {{RTCPeerConnection}},
+			  including disabling use of the interface entirely. Such behavior is defined
+			  as <dfn>administratively prohibited</dfn>.
+		    </p>
+		  </section>
           <section>
             <h4>
               Constructor
@@ -1215,6 +1225,12 @@
                   specified here, [= exception/throw =] an {{UnknownError}}
                   with the {{DOMException/message}} attribute set to an
                   appropriate description.
+                </p>
+              </li>
+			  <li class="no-test-needed">
+                <p>
+                  If the use of {{RTCPeerConnection}} is [= administratively
+				  prohibited =], throw a {{NotAllowedError}}.
                 </p>
               </li>
               <li class="no-test-needed">
@@ -4691,7 +4707,7 @@ interface RTCPeerConnection : EventTarget  {
                     </li>
                   </ol>
                   <p>
-                    A candidate is <dfn>administratively prohibited</dfn> if
+                    A candidate is [= administratively prohibited =] if
                     the UA has decided not to allow connection attempts to this
                     address.
                   </p>
